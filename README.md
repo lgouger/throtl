@@ -11,4 +11,3 @@ URLs can be of the following forms: (time units of milliseconds, seconds and min
 * http://throtl.me/12/seconds
 * http://throtl.me/12/secs
 * http://throtl.me/1/min
-* 
