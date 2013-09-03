@@ -11,25 +11,25 @@ class DelayController {
     def milliseconds() {
         Long sleepTime = idAsLong(params.id) ?: 1000;
 
-        sleepAndGo(sleepTime)
+        sleepAndGo(sleepTime, params.url)
     }
 
     def tenths() {
         Long SleepTenths = idAsLong(params.id) ?: 10
 
-        sleepAndGo(SleepTenths * MILLISECONDS_PER_TENTH)
+        sleepAndGo(SleepTenths * MILLISECONDS_PER_TENTH, params.url)
     }
 
     def seconds() {
         Long sleepSeconds = idAsLong(params.id) ?: 1
 
-        sleepAndGo(sleepSeconds * MILLISECONDS_PER_SECOND)
+        sleepAndGo(sleepSeconds * MILLISECONDS_PER_SECOND, params.url)
     }
 
     def minutes() {
         Long sleepMinutes = idAsLong(params.id) ?: 1
 
-        sleepAndGo(sleepMinutes * SECONDS_PER_MINUTE * MILLISECONDS_PER_SECOND)
+        sleepAndGo(sleepMinutes * SECONDS_PER_MINUTE * MILLISECONDS_PER_SECOND, params.url)
     }
 
     private Long idAsLong(String arg) {
@@ -42,11 +42,15 @@ class DelayController {
         return null
     }
 
-    private void sleepAndGo ( Long msSleepTime ) {
+    private void sleepAndGo ( Long msSleepTime, String url ) {
         log.debug("sleeping for " + msSleepTime + " milliseconds.")
         sleep(msSleepTime)
 
-        render(view: "/index")
+        if (url != null) {
+            redirect(url: url)
+        } else {
+            render(view: "/index")
+        }
     }
 
 }
