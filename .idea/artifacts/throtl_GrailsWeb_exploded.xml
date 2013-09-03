@@ -1,0 +1,7 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="throtl:GrailsWeb exploded">
+    <root id="root">
+      <element id="javaee-facet-resources" facet="throtl/web/GrailsWeb" />
+    </root>
+  </artifact>
+</component>
